@@ -1,0 +1,104 @@
+{
+  "project_info": {
+    "project_number": "1023478498330",
+    "firebase_url": "https://tutormanagerapp.firebaseio.com",
+    "project_id": "tutormanagerapp",
+    "storage_bucket": "tutormanagerapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1023478498330:android:2772aca1fa448277",
+        "android_client_info": {
+          "package_name": "com.example.pooja.tutormanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1023478498330-6u14mulb0v6g0n2dcr0kv7a141hdpbdu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_EtOGQxGHLcwQG5cvlxz6Af1EEwfqPYE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1023478498330:android:c0be1fc85b771dd7",
+        "android_client_info": {
+          "package_name": "com.example.poojaseth.tutormanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1023478498330-6u14mulb0v6g0n2dcr0kv7a141hdpbdu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_EtOGQxGHLcwQG5cvlxz6Af1EEwfqPYE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1023478498330:android:a345c13d4c2345b9",
+        "android_client_info": {
+          "package_name": "com.example.tutormanagerapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1023478498330-6u14mulb0v6g0n2dcr0kv7a141hdpbdu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_EtOGQxGHLcwQG5cvlxz6Af1EEwfqPYE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
