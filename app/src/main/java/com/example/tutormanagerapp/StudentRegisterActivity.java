@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -18,6 +19,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 public class StudentRegisterActivity extends AppCompatActivity {
 
@@ -62,13 +65,36 @@ public class StudentRegisterActivity extends AppCompatActivity {
 
                                     if (task.isSuccessful())
                                     {
-                                        sendEmailVerification();
-                                        sendUserData();
-                                        Toast.makeText(StudentRegisterActivity.this,
-                                                "Successfully registered,data saved!!",
-                                                Toast.LENGTH_SHORT).show();
-                                        finish();
-                                        startActivity(new Intent(StudentRegisterActivity.this,StudentLoginActivity.class));
+                                        FirebaseUser studentuser = studentAuth.getCurrentUser();
+                                        assert studentuser != null;
+                                        String userId = studentuser.getUid();
+
+                                        studentref = FirebaseDatabase.getInstance().
+                                                getReference("Students").child(userId);
+
+                                        HashMap<String,String> hashMap = new HashMap<>();
+                                        hashMap.put("id",userId);
+                                        hashMap.put("name",name);
+                                        hashMap.put("email",email);
+                                        hashMap.put("password",password);
+                                        hashMap.put("imageURL","default");
+
+                                        studentref.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful())
+                                                {
+                                                    Toast.makeText(StudentRegisterActivity.this,
+                                                            "Successfully registered,data saved!!",
+                                                            Toast.LENGTH_SHORT).show();
+                                                    finish();
+                                                    startActivity(new Intent(StudentRegisterActivity.this,StudentLoginActivity.class));
+                                                }
+                                            }
+                                        });
+                                        //sendEmailVerification();
+                                        //sendUserData();
+
                                     }
                                     else {
                                         Toast.makeText(StudentRegisterActivity.this,
@@ -123,7 +149,7 @@ public class StudentRegisterActivity extends AppCompatActivity {
                                 Toast.LENGTH_SHORT).show();
                         studentAuth.signOut();
                         finish();
-                        startActivity(new Intent(StudentRegisterActivity.this,StudentLoginActivity.class));
+                        //startActivity(new Intent(StudentRegisterActivity.this,StudentLoginActivity.class));
                     }
                     else {
                         Toast.makeText(StudentRegisterActivity.this,
@@ -134,20 +160,15 @@ public class StudentRegisterActivity extends AppCompatActivity {
             });
         }
     }
-    private void sendUserData()
-    {
+    private void sendUserData() {
         String email = emailET.getText().toString().trim();
         String name = nameET.getText().toString().trim();
         String password = passwordET.getText().toString().trim();
 
         String id = studentref.push().getKey();
 
-        Student student = new Student(id,email,name,password);
+        //Student student = new Student(id, email, name, password);
         assert id != null;
-        studentref.child(id).setValue(student);
-        emailET.setText("");
-        nameET.setText("");
-        passwordET.setText("");
-
+        //studentref.child(id).setValue(student);
     }
 }

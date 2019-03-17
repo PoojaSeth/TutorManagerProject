@@ -7,14 +7,14 @@
     android:background="@drawable/background"
     tools:context=".StudentLoginActivity">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profilepic"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        app:srcCompat="@drawable/student"
         android:layout_marginTop="40dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/student"/>
 
     <EditText
         android:id="@+id/emailET"

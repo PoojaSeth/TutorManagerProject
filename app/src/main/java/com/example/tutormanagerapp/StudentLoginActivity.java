@@ -15,13 +15,22 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class StudentLoginActivity extends AppCompatActivity {
 
     private EditText emailET, passwordET;
     private Button loginbtn,registerbtn,forgotpasswordbtn;
+    private CircleImageView profilepic;
 
     private FirebaseAuth studentAuth;
+
+    private FirebaseUser studentuser;
+
+    private DatabaseReference studentref;
 
     private ProgressDialog progressDialog;
 
@@ -36,9 +45,21 @@ public class StudentLoginActivity extends AppCompatActivity {
         loginbtn = (Button)findViewById(R.id.loginbtn);
         registerbtn = (Button)findViewById(R.id.registerbtn);
         forgotpasswordbtn = (Button)findViewById(R.id.forgotPasswordbtn);
+        profilepic = (CircleImageView)findViewById(R.id.profilepic);
 
         studentAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
+
+        studentuser = FirebaseAuth.getInstance().getCurrentUser();
+        //studentref = FirebaseDatabase.getInstance().
+
+        //check if user is already logged in
+        if (studentuser != null)
+        {
+            startActivity(new Intent(StudentLoginActivity.this,StudentHomeActivity.class));
+            finish();
+        }
+
 
         registerbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +68,7 @@ public class StudentLoginActivity extends AppCompatActivity {
             }
         });
 
-        FirebaseUser user = studentAuth.getCurrentUser();
+
 
 
         loginbtn.setOnClickListener(new View.OnClickListener() {
@@ -88,7 +109,8 @@ public class StudentLoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             progressDialog.dismiss();
-                            checkEmailVerification();
+                            //checkEmailVerification();
+                            startActivity(new Intent(StudentLoginActivity.this, StudentHomeActivity.class));
 
                         }
                         else {
