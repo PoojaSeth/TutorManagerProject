@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+
+
+    <Button
+        android:id="@+id/studentchatsbtn"
+        android:layout_width="153dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="400dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/button_rounded"
+        android:text="Chats"
+        android:textSize="25dp" />
+
+    <Button
+        android:id="@+id/studentUsersbtn"
+        android:layout_width="153dp"
+        android:layout_height="61dp"
+        android:layout_alignBaseline="@+id/studentchatsbtn"
+        android:layout_marginLeft="220dp"
+        android:layout_marginTop="400dp"
+        android:background="@drawable/button_rounded"
+        android:text="Users"
+        android:textSize="25dp" />
+
+</RelativeLayout>

@@ -6,11 +6,13 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,11 +27,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class StudentHomeActivity extends AppCompatActivity {
 
-    private FirebaseUser studentUser;
-    private DatabaseReference studentref;
+    private FirebaseUser user;
+    private DatabaseReference reference;
 
-    private CircleImageView profilepic;
-    private TextView nameTV;
+    CircleImageView profilepic;
+    TextView nameTV;
 
 
     @Override
@@ -37,18 +39,31 @@ public class StudentHomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_home);
 
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
 
 
-/*
-        studentUser = FirebaseAuth.getInstance().getCurrentUser();
-        studentref = FirebaseDatabase.getInstance().getReference("Students").child(studentUser.getUid());
 
-        studentref.addValueEventListener(new ValueEventListener() {
+
+        nameTV = (TextView)findViewById(R.id.nameTV);
+        profilepic = (CircleImageView)findViewById(R.id.profilepic);
+
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        reference = FirebaseDatabase.getInstance().getReference("Students").child(user.getUid());
+
+        reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Student student = dataSnapshot.getValue(Student.class);
                 assert student != null;
-                nameTV.setText(student.getName());
+
+                Log.i("onDataChange: ",student.getName());
+                String name = student.getName();
+                Log.i( "onDataChange: ",name);
+                Log.i("onDataChange: ",student.getImageURL());
+                nameTV.setText(name);
                 if (student.getImageURL().equals("default"))
                 {
                     profilepic.setImageResource(R.mipmap.ic_launcher);
@@ -63,7 +78,7 @@ public class StudentHomeActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });*/
+        });
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
@@ -97,4 +112,23 @@ public class StudentHomeActivity extends AppCompatActivity {
 
         }
     };
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_toolbar,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.logout:
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(StudentHomeActivity.this,StudentLoginActivity.class));
+                finish();
+                return true;
+        }
+        return false;
+
+    }
 }

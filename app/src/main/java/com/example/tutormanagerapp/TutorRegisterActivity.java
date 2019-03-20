@@ -15,17 +15,24 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class TutorRegisterActivity extends AppCompatActivity {
 
     private EditText emailET, nameET, passwordET;
     private Button registerbtn;
-    private ImageView profilepic;
+    private CircleImageView profilepic;
 
-    FirebaseAuth tutorAuth;
-    DatabaseReference tutorref;
+    FirebaseAuth auth;
+    DatabaseReference reference;
 
     String email,name,password;
 
@@ -39,11 +46,11 @@ public class TutorRegisterActivity extends AppCompatActivity {
         passwordET = (EditText)findViewById(R.id.passwordET);
 
         registerbtn = (Button)findViewById(R.id.registerbtn);
-        profilepic = (ImageView)findViewById(R.id.profilepic);
+        profilepic = (CircleImageView) findViewById(R.id.profilepic);
 
-        tutorAuth = FirebaseAuth.getInstance();
+        auth = FirebaseAuth.getInstance();
 
-        tutorref = FirebaseDatabase.getInstance().getReference("Tutors");
+        reference = FirebaseDatabase.getInstance().getReference("Tutors");
 
         registerbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,19 +61,42 @@ public class TutorRegisterActivity extends AppCompatActivity {
                     final String name = nameET.getText().toString().trim();
                     final String password = passwordET.getText().toString().trim();
 
-                    tutorAuth.createUserWithEmailAndPassword(email,password)
+                    auth.createUserWithEmailAndPassword(email,password)
                             .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful())
                                     {
-                                        sendEmailVerification();
-                                        sendUserData();
-                                        Toast.makeText(TutorRegisterActivity.this,
-                                                "Successfully registered,data saved!!",
-                                                Toast.LENGTH_SHORT).show();
-                                        finish();
-                                        startActivity(new Intent(TutorRegisterActivity.this,TutorLoginActivity.class));
+                                        FirebaseUser user = auth.getCurrentUser();
+                                        assert user != null;
+                                        String userId = user.getUid();
+
+                                        reference = FirebaseDatabase.getInstance().
+                                                getReference("Tutors").child(userId);
+
+                                        HashMap<String,String> hashMap = new HashMap<>();
+                                        hashMap.put("id",userId);
+                                        hashMap.put("name",name);
+                                        hashMap.put("email",email);
+                                        hashMap.put("password",password);
+                                        hashMap.put("imageURL","default");
+
+                                        reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful())
+                                                {
+                                                    Toast.makeText(TutorRegisterActivity.this,
+                                                            "Successfully registered,data saved!!",
+                                                            Toast.LENGTH_SHORT).show();
+                                                    finish();
+                                                    startActivity(new Intent(TutorRegisterActivity.this,TutorHomeActivity.class));
+                                                }
+                                            }
+                                        });
+
+                                        //sendEmailVerification();
+                                        //sendUserData();
                                     }
                                     else {
                                         Toast.makeText(TutorRegisterActivity.this,
@@ -108,7 +138,7 @@ public class TutorRegisterActivity extends AppCompatActivity {
 
     private void sendEmailVerification()
     {
-        FirebaseUser firebaseUser = tutorAuth.getInstance().getCurrentUser();
+        FirebaseUser firebaseUser = auth.getInstance().getCurrentUser();
         if (firebaseUser != null)
         {
             firebaseUser.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -120,7 +150,7 @@ public class TutorRegisterActivity extends AppCompatActivity {
                         Toast.makeText(TutorRegisterActivity.this,
                                 "Successfully registered and verification email has been sent!!!",
                                 Toast.LENGTH_SHORT).show();
-                        tutorAuth.signOut();
+                        auth.signOut();
                         finish();
                         startActivity(new Intent(TutorRegisterActivity.this,TutorLoginActivity.class));
                     }
@@ -139,11 +169,11 @@ public class TutorRegisterActivity extends AppCompatActivity {
         String name = nameET.getText().toString().trim();
         String password = passwordET.getText().toString().trim();
 
-        String id = tutorref.push().getKey();
+        String id = reference.push().getKey();
 
         Tutor tutor = new Tutor(id,email,name,password);
         assert id != null;
-        tutorref.child(id).setValue(tutor);
+        reference.child(id).setValue(tutor);
         emailET.setText("");
         nameET.setText("");
         passwordET.setText("");

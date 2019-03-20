@@ -15,15 +15,35 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class TutorLoginActivity extends AppCompatActivity {
 
     private EditText emailET, passwordET;
     private Button loginbtn,registerbtn,forgotpasswordbtn;
+    private CircleImageView profilepic;
 
     private FirebaseAuth tutorAuth;
 
+    private FirebaseUser user;
+
+    private DatabaseReference reference;
+
     private ProgressDialog progressDialog;
+
+    //@Override
+   /* protected void onStart() {
+        super.onStart();
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        //check if user is already logged in
+        if (user != null)
+        {
+            startActivity(new Intent(TutorLoginActivity.this,TutorHomeActivity.class));
+            finish();
+        }
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +53,16 @@ public class TutorLoginActivity extends AppCompatActivity {
         emailET = (EditText)findViewById(R.id.emailET);
         passwordET = (EditText)findViewById(R.id.passwordET);
 
+
         loginbtn = (Button)findViewById(R.id.loginbtn);
         registerbtn = (Button)findViewById(R.id.registerbtn);
         forgotpasswordbtn = (Button)findViewById(R.id.forgotPasswordbtn);
+        profilepic = (CircleImageView)findViewById(R.id.profilepic);
 
+        tutorAuth = FirebaseAuth.getInstance();
+        progressDialog = new ProgressDialog(this);
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
 
         registerbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,10 +71,6 @@ public class TutorLoginActivity extends AppCompatActivity {
             }
         });
 
-        tutorAuth = FirebaseAuth.getInstance();
-        progressDialog = new ProgressDialog(this);
-
-        FirebaseUser user = tutorAuth.getCurrentUser();
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,11 +108,11 @@ public class TutorLoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             progressDialog.dismiss();
-                            checkEmailVerification();
+                            //checkEmailVerification();
                             Toast.makeText(TutorLoginActivity.this,
                                     "Login Successfull",
                                     Toast.LENGTH_SHORT).show();
-                            //startActivity(new Intent(TutorLoginActivity.this, TutorHomeActivity.class));
+                            startActivity(new Intent(TutorLoginActivity.this, TutorHomeActivity.class));
 
                         }
                         else {

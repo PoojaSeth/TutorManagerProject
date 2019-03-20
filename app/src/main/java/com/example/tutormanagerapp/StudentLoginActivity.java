@@ -34,6 +34,21 @@ public class StudentLoginActivity extends AppCompatActivity {
 
     private ProgressDialog progressDialog;
 
+   /* @Override
+    protected void onStart() {
+        super.onStart();
+
+        studentuser = FirebaseAuth.getInstance().getCurrentUser();
+        //check if user is already logged in
+       if (studentuser != null)
+        {
+            startActivity(new Intent(StudentLoginActivity.this,StudentHomeActivity.class));
+            finish();
+        }
+
+
+    }*/
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,23 +68,12 @@ public class StudentLoginActivity extends AppCompatActivity {
         studentuser = FirebaseAuth.getInstance().getCurrentUser();
         //studentref = FirebaseDatabase.getInstance().
 
-        //check if user is already logged in
-        if (studentuser != null)
-        {
-            startActivity(new Intent(StudentLoginActivity.this,StudentHomeActivity.class));
-            finish();
-        }
-
-
         registerbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(StudentLoginActivity.this,StudentRegisterActivity.class));
             }
         });
-
-
-
 
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override

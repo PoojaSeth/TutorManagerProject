@@ -42,14 +42,4 @@
         android:text="Student"
         android:textSize="25dp"
          />
-
-    <Button
-        android:id="@+id/testbtn"
-        android:layout_width="156dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/studentbtn"
-        android:layout_marginBottom="-115dp"
-        android:text="Test" />
-
-
 </RelativeLayout>
