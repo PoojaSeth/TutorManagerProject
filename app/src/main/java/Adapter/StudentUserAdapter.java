@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,11 +24,13 @@ public class StudentUserAdapter extends RecyclerView.Adapter<StudentUserAdapter.
 
     private Context mcontext;
     private List<StudentUser> users;
+    private boolean isChat;
 
-    public StudentUserAdapter(Context mcontext,List<StudentUser> users)
+    public StudentUserAdapter(Context mcontext,List<StudentUser> users, boolean isChat)
     {
         this.mcontext = mcontext;
         this.users = users;
+        this.isChat = isChat;
     }
 
     @NonNull
@@ -50,6 +53,21 @@ public class StudentUserAdapter extends RecyclerView.Adapter<StudentUserAdapter.
         else {
             Glide.with(mcontext).load(user.getImageURL()).into(viewHolder.profilepic);
         }
+        if (isChat)
+        {
+            if (user.getStatus().equals("online"))
+            {
+                viewHolder.img_on.setVisibility(View.VISIBLE);
+                viewHolder.img_off.setVisibility(View.GONE);
+            }
+            else {
+                viewHolder.img_on.setVisibility(View.GONE);
+                viewHolder.img_off.setVisibility(View.VISIBLE);
+            }
+        }else {
+            viewHolder.img_on.setVisibility(View.GONE);
+            viewHolder.img_off.setVisibility(View.GONE);
+        }
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +88,8 @@ public class StudentUserAdapter extends RecyclerView.Adapter<StudentUserAdapter.
     {
         public TextView name;
         public ImageView profilepic;
+        private ImageView img_on;
+        private ImageView img_off;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -77,6 +97,9 @@ public class StudentUserAdapter extends RecyclerView.Adapter<StudentUserAdapter.
 
             name = itemView.findViewById(R.id.nameTV);
             profilepic = itemView.findViewById(R.id.profilepic);
+            img_on = itemView.findViewById(R.id.img_on);
+            img_off = itemView.findViewById(R.id.img_off);
+
 
         }
     }

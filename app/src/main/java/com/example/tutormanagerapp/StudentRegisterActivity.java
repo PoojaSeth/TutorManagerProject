@@ -78,6 +78,7 @@ public class StudentRegisterActivity extends AppCompatActivity {
                                         hashMap.put("email",email);
                                         hashMap.put("password",password);
                                         hashMap.put("imageURL","default");
+                                        hashMap.put("status","offline");
 
                                         studentref.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override

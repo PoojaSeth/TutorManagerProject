@@ -7,13 +7,23 @@ public class StudentUser {
     private String password;
     private String id;
     private String imageURL;
+    private String status;
 
-    public StudentUser(String email, String name, String password, String id, String imageURL) {
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public StudentUser(String email, String name, String password, String id, String imageURL, String status) {
         this.email = email;
         this.name = name;
         this.password = password;
         this.id = id;
         this.imageURL = imageURL;
+        this.status = status;
     }
 
     public StudentUser() {
