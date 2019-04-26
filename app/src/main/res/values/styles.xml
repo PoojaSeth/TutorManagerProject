@@ -16,4 +16,11 @@
         <item name="android:background">@android:color/white</item>
     </style>
 
+    <style name="ToolbarOverlayTheme" parent="@style/Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="background">@color/colorPrimary</item>
+        <item name="windowActionBarOverlay">true</item>
+    </style>
+
 </resources>

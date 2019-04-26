@@ -10,8 +10,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -48,7 +46,7 @@ public class StudentHomeActivity extends AppCompatActivity {
 
 
 
-        nameTV = (TextView)findViewById(R.id.nameTV);
+        nameTV = (TextView)findViewById(R.id.emailTV2);
         profilepic = (CircleImageView)findViewById(R.id.profilepic);
 
 
@@ -97,9 +95,15 @@ public class StudentHomeActivity extends AppCompatActivity {
                 case R.id.nav_home:
                     selectedFragment = new HomeFragment();
                     break;
+                case R.id.nav_courses:
+                    selectedFragment = new StudentSelectCourseFragment();
+                    break;
+
                 case R.id.nav_profile:
                     selectedFragment = new ProfileFragment();
                     break;
+
+
                 case R.id.nav_chat:
                     selectedFragment = new ChatFragment();
                     break;

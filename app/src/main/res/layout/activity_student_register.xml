@@ -65,7 +65,8 @@
         android:layout_marginTop="22dp"
         android:background="@drawable/button_rounded"
         android:text="Register"
-        android:textSize="25dp"/>
+        android:textSize="25dp"
+        android:textColor="@android:color/white"/>
 
 
 

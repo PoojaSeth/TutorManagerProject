@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
-    tools:context=".StudentMessageActivity">
+    tools:context=".TutorMessageActivity"
+    android:background="@drawable/background">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/bar_layout"
@@ -22,14 +22,14 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:id="@+id/profilepic"/>
+                android:id="@+id/profile_image"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Name"
-                android:id="@+id/emailTV2"
-                android:layout_toRightOf="@+id/profilepic"
-                android:layout_toEndOf="@+id/profilepic"
+                android:id="@+id/username"
+                android:layout_toRightOf="@+id/profile_image"
+                android:layout_toEndOf="@+id/profile_image"
                 android:layout_marginLeft="33dp"
                 android:layout_centerVertical="true"
                 android:textSize="18sp"/>
@@ -46,7 +46,7 @@
         android:layout_above="@+id/sendMessage"
         />
 
-    
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:padding="5dp"

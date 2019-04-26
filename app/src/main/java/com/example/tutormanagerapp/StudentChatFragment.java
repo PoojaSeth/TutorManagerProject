@@ -64,6 +64,7 @@ public class StudentChatFragment extends Fragment {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren())
                 {
                     Chat chat = snapshot.getValue(Chat.class);
+                    assert chat != null;
                     if (chat.getSender().equals(fuser.getUid()))
                     {
                         usersList.add(chat.getReceiver());
@@ -104,6 +105,7 @@ public class StudentChatFragment extends Fragment {
                     //display 1 user from the chats
                     for (String id: usersList)
                     {
+                        assert user != null;
                         if (user.getId().equals(id))
                         {
                             if (musers.size() != 0)
@@ -121,7 +123,7 @@ public class StudentChatFragment extends Fragment {
                         }
                     }
                 }
-                userAdapter = new StudentUserAdapter(getContext(),musers,true);
+                userAdapter = new StudentUserAdapter(getContext(),musers);
                 recyclerView.setAdapter(userAdapter);
             }
 

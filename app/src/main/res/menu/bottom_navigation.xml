@@ -5,6 +5,14 @@
         android:id="@+id/nav_home"
         android:icon="@drawable/ic_home_black_24dp"
         android:title="Home"/>
+
+    <item
+        android:id="@+id/nav_courses"
+        android:icon="@drawable/course"
+        android:title="Courses"/>
+
+
+
     <item
         android:id="@+id/nav_profile"
         android:icon="@drawable/ic_person_black_24dp"
@@ -13,5 +21,6 @@
         android:id="@+id/nav_chat"
         android:icon="@drawable/ic_chat_black_24dp"
         android:title="Chat"/>
+
 
 </menu>

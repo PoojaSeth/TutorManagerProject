@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        tools:context=".TuorAddCourseForm"
+        tools:visibility="visible">
+
+        <TextView
+            android:id="@+id/welcomeTV1"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/toolbar"
+            android:text="Add a Course!"
+            android:textColor="@color/colorPrimary"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/welcomeTV"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/welcomeTV1"
+            android:text="Add a Course!"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="30dp" />
+
+        <!--<TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="3dp"
+            android:text=""
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp" />-->
+
+
+
+
+        <TextView
+            android:id="@+id/selectCourseTV"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/welcomeTV"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="33dp"
+            android:text="Select Courses:"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp" />
+
+        <Spinner
+            android:id="@+id/spinnerCourse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/selectCourseTV"
+            android:layout_marginLeft="33dp"
+            android:layout_marginTop="10dp"
+            android:entries="@array/select_course"/>
+
+
+        <!--<TextView
+            android:layout_width="fill_parent"
+            android:layout_height="32dp"
+            android:paddingLeft="3dp"
+            android:text="Email Address:"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp" />-->
+
+        <!-- <EditText
+             android:id="@+id/emailAddress"
+             android:layout_width="500dp"
+             android:layout_height="wrap_content"
+             android:layout_marginBottom="20dp"
+             android:height="180dp"
+             android:gravity="top"
+             android:inputType="textEmailAddress"
+             android:textSize="20sp"
+             android:layout_below="@id/spinnerCourse"
+             android:layout_marginTop="20dp"
+             android:hint="Email"
+             android:layout_marginLeft="20dp"
+             />-->
+
+
+        <!--<TextView
+            android:layout_width="fill_parent"
+            android:layout_height="32dp"
+            android:paddingLeft="3dp"
+            android:text="Phone Number:"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/your_message3"
+            android:layout_width="500dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:height="180dp"
+            android:gravity="top"
+            android:inputType="phone"
+            android:textSize="14sp" />-->
+
+
+        <EditText
+            android:id="@+id/experience"
+            android:layout_width="400dp"
+            android:layout_height="100dp"
+            android:layout_below="@+id/spinnerCourse"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+            android:height="180dp"
+            android:gravity="top"
+            android:hint="Experience"
+            android:inputType="textMultiLine"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/availableTV"
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/experience"
+            android:layout_centerHorizontal="true"
+            android:text="Availabilities"
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/mondayTV"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/availableTV"
+            android:layout_marginTop="15dp"
+            android:text="Monday: "
+            android:textSize="20dp" />
+
+
+        <TextView
+            android:id="@+id/tuesdayTV"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mondayTV"
+            android:layout_marginTop="15dp"
+            android:text="Tuesday: "
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/wednesdayTV"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tuesdayTV"
+            android:layout_marginTop="15dp"
+            android:text="Wednesday: "
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/thursdayTV"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/wednesdayTV"
+            android:layout_marginTop="15dp"
+            android:text="Thursday: "
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/fridayTV"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/thursdayTV"
+            android:layout_marginTop="15dp"
+            android:text="Friday: "
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/submitCourse"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_below="@+id/thursdayTV"
+            android:layout_centerHorizontal="true"
+            android:text="Submit"
+            android:background="@drawable/button_rounded"
+            android:textColor="@android:color/white"
+            />
+
+
+        <!--<TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="3dp"
+            android:text="Availabilities:"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp" />
+
+        <CalendarView
+            android:id="@+id/calendarView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/sendMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:background="@color/colorPrimary"
+            android:paddingBottom="1dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="1dp"
+            android:text="Add Course"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textSize="13sp" />-->
+
+        <!--</LinearLayout>-->
+
+    </RelativeLayout>
+
+</ScrollView>

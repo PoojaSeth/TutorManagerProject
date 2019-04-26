@@ -8,7 +8,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button studentbtn,tutorbtn;
+    private Button studentbtn,tutorbtn,testbtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
         studentbtn = (Button)findViewById(R.id.studentbtn);
         tutorbtn = (Button)findViewById(R.id.tutorbtn);
+        testbtn = (Button)findViewById(R.id.testbtn);
 
         studentbtn.setOnClickListener(new View.OnClickListener() {
             @Override

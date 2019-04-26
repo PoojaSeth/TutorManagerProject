@@ -3,4 +3,25 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="select_subject">
+        <item>-----Select a subject----</item>>
+        <item>Math</item>
+        <item>Science</item>
+        <item>History</item>
+        <item>Writing</item>
+        <item>Reading</item>
+        <item>Computer Science</item>
+    </string-array>
+    ​
+
+    <string-array name="select_course">
+        <item>-----Select a course----</item>>
+        <item>OPERATING SYSTEMS IN PRACTICE</item>
+        <item>MACHINE LEARNING</item>
+        <item>ADVANCED ALGORITHM DESIGN AND ANALYSIS</item>
+        <item>CRYPTOGRAPHY AND CLOUD SECURITY</item>
+        <item>ADVANCED SOFTWARE ENGINEERING</item>
+        <item>SOFTWARE TESTING</item>
+    </string-array>
 </resources>

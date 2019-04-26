@@ -51,7 +51,8 @@
         android:layout_marginTop="32dp"
         android:background="@drawable/button_rounded"
         android:text="LOGIN"
-        android:textSize="25dp"/>
+        android:textSize="25dp"
+        android:textColor="@android:color/white"/>
 
     <Button
         android:id="@+id/registerbtn"
@@ -62,7 +63,8 @@
         android:layout_marginTop="22dp"
         android:background="@drawable/button_rounded"
         android:text="Register"
-        android:textSize="25dp"/>
+        android:textSize="25dp"
+        android:textColor="@android:color/white"/>
 
     <Button
         android:id="@+id/forgotPasswordbtn"
@@ -73,7 +75,8 @@
         android:layout_marginTop="22dp"
         android:background="@android:color/transparent"
         android:text="Forgot Password?"
-        android:textSize="25dp"/>
+        android:textSize="25dp"
+        android:textColor="@android:color/white"/>
 
 
 </RelativeLayout>

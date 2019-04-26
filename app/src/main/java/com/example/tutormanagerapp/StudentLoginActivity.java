@@ -34,7 +34,7 @@ public class StudentLoginActivity extends AppCompatActivity {
 
     private ProgressDialog progressDialog;
 
-   /* @Override
+    /*@Override
     protected void onStart() {
         super.onStart();
 

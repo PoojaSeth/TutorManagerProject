@@ -29,7 +29,7 @@ import java.util.List;
 import Adapter.MessageAdapter;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class StudentMessageActivity extends AppCompatActivity {
+public class TutorMessageActivity extends AppCompatActivity {
 
     private CircleImageView profilepic;
     private TextView name;
@@ -51,7 +51,7 @@ public class StudentMessageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_message);
+        setContentView(R.layout.activity_tutor_message);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -67,7 +67,7 @@ public class StudentMessageActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(StudentMessageActivity.this,StudentHomeActivity.class).
+                startActivity(new Intent(TutorMessageActivity.this,TutorHomeActivity.class).
                         setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
             }
         });
@@ -75,8 +75,8 @@ public class StudentMessageActivity extends AppCompatActivity {
         final String userId = intent.getStringExtra("UserId");
         fuser = FirebaseAuth.getInstance().getCurrentUser();
 
-        profilepic = findViewById(R.id.profilepic);
-        name = findViewById(R.id.emailTV2);
+        profilepic = findViewById(R.id.profile_image);
+        name = findViewById(R.id.username);
 
         send_btn = findViewById(R.id.sendbtn);
         text_send = findViewById(R.id.textSend);
@@ -90,7 +90,7 @@ public class StudentMessageActivity extends AppCompatActivity {
                     sendMessage(fuser.getUid(),userId,msg);
                 }
                 else {
-                    Toast.makeText(StudentMessageActivity.this,"You can't send empty message!!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TutorMessageActivity.this,"You can't send empty message!!",Toast.LENGTH_SHORT).show();
                 }
                 text_send.setText("");
             }
@@ -101,12 +101,12 @@ public class StudentMessageActivity extends AppCompatActivity {
 
 
 
-        reference = FirebaseDatabase.getInstance().getReference("Tutors").child(userId);
+        reference = FirebaseDatabase.getInstance().getReference("Students").child(userId);
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                TutorUser user = dataSnapshot.getValue(TutorUser.class);
+                StudentUser user = dataSnapshot.getValue(StudentUser.class);
                 assert user != null;
                 name.setText(user.getName());
 
@@ -116,7 +116,7 @@ public class StudentMessageActivity extends AppCompatActivity {
 
                 }
                 else {
-                    Glide.with(StudentMessageActivity.this).load(user.getImageURL()).into(profilepic);
+                    Glide.with(TutorMessageActivity.this).load(user.getImageURL()).into(profilepic);
                 }
                 readMessage(fuser.getUid(),userId,user.getImageURL());
             }
@@ -127,7 +127,9 @@ public class StudentMessageActivity extends AppCompatActivity {
             }
         });
 
+
     }
+
     private void sendMessage(String sender, String receiver,String message)
     {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
@@ -140,11 +142,13 @@ public class StudentMessageActivity extends AppCompatActivity {
         reference.child("Chats").push().setValue(hashMap);
 
     }
-     private void readMessage(final String myid, final String userid, final String imageurl)
+
+    private void readMessage(final String myid, final String userid, final String imageurl)
     {
         mchat = new ArrayList<>();
 
         reference = FirebaseDatabase.getInstance().getReference("Chats");
+
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -158,7 +162,7 @@ public class StudentMessageActivity extends AppCompatActivity {
                     {
                         mchat.add(chat);
                     }
-                    messageAdapter = new MessageAdapter(StudentMessageActivity.this,mchat,imageurl);
+                    messageAdapter = new MessageAdapter(TutorMessageActivity.this,mchat,imageurl);
                     recyclerView.setAdapter(messageAdapter);
                 }
             }
@@ -169,25 +173,4 @@ public class StudentMessageActivity extends AppCompatActivity {
             }
         });
     }
-    /*private void status(String status)
-    {
-        reference = FirebaseDatabase.getInstance().getReference("Students").child(fuser.getUid());
-
-        HashMap<String,Object> hashMap = new HashMap<>();
-        hashMap.put("status",status);
-
-        reference.updateChildren(hashMap);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        status("online");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        status("offline");
-    }*/
 }

@@ -1,6 +1,5 @@
 package com.example.tutormanagerapp;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,32 +7,28 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Objects;
-
-import static android.support.constraint.Constraints.TAG;
-
 public class ProfileFragment extends Fragment {
 
     private ImageView profilePic;
-    private TextView nameTV, emailTV;
-    private Button editProfilebtn;
+    private TextView nameTV, emailTV, passwordTV;
+    private Button updateProfilebtn;
+    private DatabaseReference dbRef;
+    private FirebaseAuth mauth;
+    private String currentUserID;
 
 
 
@@ -41,59 +36,52 @@ public class ProfileFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_profile,container,false);
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        nameTV = (TextView)view.findViewById(R.id.nameTV);
-        emailTV = (TextView)view.findViewById(R.id.emailTV);
 
-        editProfilebtn = (Button)view.findViewById(R.id.editProfilebtn);
-        //FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        //Student student = new Student();
-        //final String uid = currentUser.getUid();
-       // Log.d(TAG, "Id: "+uid);
+        mauth = FirebaseAuth.getInstance();
+        currentUserID = mauth.getCurrentUser().getUid();
+        dbRef = FirebaseDatabase.getInstance().getReference().child("Students").child(currentUserID);
 
-        //loadUserInformation();
-        editProfilebtn.setOnClickListener(new View.OnClickListener() {
+        profilePic = view.findViewById(R.id.profilepic);
+        nameTV = view.findViewById(R.id.emailTV2);
+        emailTV = view.findViewById(R.id.emailTV);
+        passwordTV = view.findViewById(R.id.passwordTV);
+
+        updateProfilebtn = view.findViewById(R.id.updateProfilebtn);
+
+        updateProfilebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.replace(R.id.fragment_container,new UpdateStudentProfileFragment());
+                ft.commit();
+            }
+        });
+        dbRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    String email = dataSnapshot.child("email").getValue().toString();
+                    String name = dataSnapshot.child("name").getValue().toString();
+                    String password = dataSnapshot.child("password").getValue().toString();
+                    //**Get profile image later on**
 
-                FragmentTransaction fr = getFragmentManager().beginTransaction();
-                fr.replace(R.id.fragment_container,new EditStudentProfile());
-                fr.commit();
+                    nameTV.setText(name);
+                    emailTV.setText(email);
+                    passwordTV.setText(password);
 
+                }
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-
-                //Log.d(TAG, "Data: "+databaseReference);
-
-                //startActivity(new Intent(ProfileFragment.this, StudentHomeActivity.class));
             }
         });
 
+
         return view;
-
     }
 
-    FirebaseAuth mauth;
-
-    public void loadUserInformation()
-    {
-        FirebaseUser user = mauth.getCurrentUser();
-
-        if (user != null) {
-            if (user.getEmail()!=null)
-            {
-                emailTV.setText(user.getEmail());
-            }
-            if (user != null)
-            {
-                nameTV.setText(user.getDisplayName());
-            }
-        }
-
-        //String name = user.getDisplayName().toString();
-
     }
-
-
-}

@@ -71,6 +71,7 @@ public class TutorRegisterActivity extends AppCompatActivity {
                                         assert user != null;
                                         String userId = user.getUid();
 
+
                                         reference = FirebaseDatabase.getInstance().
                                                 getReference("Tutors").child(userId);
 
@@ -81,6 +82,7 @@ public class TutorRegisterActivity extends AppCompatActivity {
                                         hashMap.put("password",password);
                                         hashMap.put("imageURL","default");
 
+                                        // sending data to tutor table
                                         reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
@@ -171,12 +173,12 @@ public class TutorRegisterActivity extends AppCompatActivity {
 
         String id = reference.push().getKey();
 
-        Tutor tutor = new Tutor(id,email,name,password);
+        /*Tutor tutor = new Tutor(id,email,name,password);
         assert id != null;
         reference.child(id).setValue(tutor);
         emailET.setText("");
         nameET.setText("");
-        passwordET.setText("");
+        passwordET.setText("");*/
 
     }
 }

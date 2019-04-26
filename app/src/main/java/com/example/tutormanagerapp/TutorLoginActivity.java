@@ -33,8 +33,8 @@ public class TutorLoginActivity extends AppCompatActivity {
 
     private ProgressDialog progressDialog;
 
-    //@Override
-   /* protected void onStart() {
+    /*@Override
+    protected void onStart() {
         super.onStart();
         user = FirebaseAuth.getInstance().getCurrentUser();
         //check if user is already logged in

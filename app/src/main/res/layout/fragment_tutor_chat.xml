@@ -8,23 +8,27 @@
 
     <Button
         android:id="@+id/tutorchatsbtn"
-        android:layout_width="153dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="400dp"
-        android:layout_marginLeft="20dp"
+        android:layout_width="190dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/button_rounded"
         android:text="Chats"
-        android:textSize="25dp" />
+        android:textSize="25dp"
+        android:textColor="@android:color/white"
+        />
 
     <Button
         android:id="@+id/tutorUsersbtn"
-        android:layout_width="153dp"
-        android:layout_height="61dp"
+        android:layout_width="190dp"
+        android:layout_height="63dp"
         android:layout_alignBaseline="@+id/studentchatsbtn"
         android:layout_marginLeft="220dp"
-        android:layout_marginTop="400dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/button_rounded"
         android:text="Users"
-        android:textSize="25dp" />
+        android:textSize="25dp"
+        android:textColor="@android:color/white"/>
 
 </RelativeLayout>

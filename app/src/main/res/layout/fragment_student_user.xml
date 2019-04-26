@@ -3,25 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".StudentUserFragment">
+
+    <!--<EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:hint="Search..."
+        android:id="@+id/search_users"/>-->
 
 
     <android.support.v7.widget.RecyclerView
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="50dp"
         android:id="@+id/studentUserRV"/>
-
-    <!--
-   <ListView
-       android:id="@+id/listview"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent">
-
-   </ListView>-->
-
-
-
 
 
 </RelativeLayout>

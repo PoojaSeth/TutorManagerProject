@@ -30,6 +30,7 @@
         android:layout_marginTop="240dp"
         android:layout_marginLeft="10dp"
         android:textSize="25dp"
+        android:textColor="@android:color/white"
         />
 
     <Button
@@ -41,5 +42,19 @@
         android:background="@drawable/button_rounded"
         android:text="Student"
         android:textSize="25dp"
+        android:textColor="@android:color/white"
          />
+
+    <Button
+        android:id="@+id/testbtn"
+        android:layout_width="156dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/studentbtn"
+        android:layout_marginLeft="230dp"
+        android:background="@drawable/button_rounded"
+        android:text="Test"
+        android:layout_marginTop="30dp"
+        android:textSize="25dp"
+
+        />
 </RelativeLayout>

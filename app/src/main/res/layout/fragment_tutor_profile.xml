@@ -1,14 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TutorProfileFragment">
+    tools:context=".TutorProfileFragment"
+    android:background="@drawable/background">
 
-    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:id="@+id/profilepic"
+        android:layout_width="170dp"
+        android:layout_height="175dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/teacher" />
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/nameTV"
+        android:layout_width="361dp"
+        android:layout_height="54dp"
+        android:layout_alignBottom="@+id/profilepic"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="-93dp"
+        android:text="Name"
+        android:textAlignment="center"
+        android:textSize="30sp" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/emailTV"
+        android:layout_width="361dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/nameTV"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="-61dp"
+        android:text="Email"
+        android:textAlignment="center"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/passwordTV"
+        android:layout_width="361dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/nameTV"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="-119dp"
+        android:text="Password"
+        android:textAlignment="center"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/updateProfilebtn"
+        android:layout_width="223dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/emailTV"
+        android:layout_marginStart="110dp"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="-200dp"
+        android:background="@drawable/button_rounded"
+        android:text="Update"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textColor="@android:color/white"/>
+
+</RelativeLayout>

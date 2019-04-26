@@ -10,7 +10,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:id="@+id/profilepic"
-        android:src="@drawable/student"/>
+        android:src="@drawable/teacher"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,8 +21,8 @@
         android:layout_marginLeft="33dp"
         android:layout_centerVertical="true"
         android:textSize="18sp"/>
-    
-    <de.hdodenhof.circleimageview.CircleImageView
+
+   <!-- <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="15dp"
         android:layout_height="15dp"
         app:civ_border_width="10dp"
@@ -30,7 +30,7 @@
         android:id="@+id/img_on"
         android:visibility="gone"
         android:src="@mipmap/ic_launcher"
-        android:layout_below="@+id/emailTV2"
+        android:layout_below="@+id/nameTV"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="-15dp"
         android:layout_toRightOf="@+id/profilepic"
@@ -44,11 +44,11 @@
         android:id="@+id/img_off"
         android:visibility="gone"
         android:src="@mipmap/ic_launcher"
-        android:layout_below="@+id/emailTV2"
+        android:layout_below="@+id/nameTV"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="-15dp"
         android:layout_toRightOf="@+id/profilepic"
-        android:layout_toEndOf="@+id/profilepic"/>
+        android:layout_toEndOf="@+id/profilepic"/>-->
 
 
 
