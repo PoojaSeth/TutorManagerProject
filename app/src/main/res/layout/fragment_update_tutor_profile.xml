@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background3">
+
+
+    <ImageView
+        android:id="@+id/profilepic"
+        android:layout_width="170dp"
+        android:layout_height="175dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        app:srcCompat="@drawable/student" />
+
+
+    <EditText
+        android:id="@+id/editNameET"
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/profilepic"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="-100dp"
+        android:text="Name"
+        android:textAlignment="center"
+        android:textSize="30sp" />
+
+    <EditText
+        android:id="@+id/editEmailET"
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/editNameET"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="-60dp"
+        android:text="Email"
+        android:textAlignment="center"
+        android:textSize="30sp" />
+
+    <EditText
+        android:id="@+id/editPasswordET"
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/editEmailET"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="-60dp"
+        android:text="Password"
+        android:inputType="textPassword"
+        android:textAlignment="center"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/updateProfileBtn"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editPasswordET"
+        android:layout_marginLeft="225dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/button_rounded"
+        android:text="Update"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/cancelUpdateBtn"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editPasswordET"
+        android:text="Cancel"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/button_rounded"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"/>
+
+
+</RelativeLayout>

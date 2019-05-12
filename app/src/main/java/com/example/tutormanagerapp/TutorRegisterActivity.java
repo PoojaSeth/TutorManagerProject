@@ -1,40 +1,67 @@
+/* Written by: Pooja Seth */
+
 package com.example.tutormanagerapp;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Build;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class TutorRegisterActivity extends AppCompatActivity {
 
+
     private EditText emailET, nameET, passwordET;
     private Button registerbtn;
-    private CircleImageView profilepic;
+    private ImageView profilepic;
 
-    FirebaseAuth auth;
-    DatabaseReference reference;
+    FirebaseAuth tutorAuth;
+    DatabaseReference tutorRef;
 
     String email,name,password;
+    FirebaseUser user;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,34 +72,38 @@ public class TutorRegisterActivity extends AppCompatActivity {
         nameET = (EditText)findViewById(R.id.nameET);
         passwordET = (EditText)findViewById(R.id.passwordET);
 
+
         registerbtn = (Button)findViewById(R.id.registerbtn);
-        profilepic = (CircleImageView) findViewById(R.id.profilepic);
+        profilepic = (ImageView)findViewById(R.id.profilepic);
+        tutorAuth = FirebaseAuth.getInstance();
 
-        auth = FirebaseAuth.getInstance();
+        user = tutorAuth.getInstance().getCurrentUser();
 
-        reference = FirebaseDatabase.getInstance().getReference("Tutors");
+        tutorRef = FirebaseDatabase.getInstance().getReference("Tutors");
 
         registerbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (validate()){
+
+                if(validate())
+                {
                     final String email = emailET.getText().toString().trim();
                     final String name = nameET.getText().toString().trim();
                     final String password = passwordET.getText().toString().trim();
 
-                    auth.createUserWithEmailAndPassword(email,password)
-                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    tutorAuth.createUserWithEmailAndPassword(email,password).
+                            addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
+
                                     if (task.isSuccessful())
                                     {
-                                        FirebaseUser user = auth.getCurrentUser();
-                                        assert user != null;
-                                        String userId = user.getUid();
+                                        FirebaseUser tutoruser = tutorAuth.getCurrentUser();
+                                        assert tutoruser != null;
+                                        String userId = tutoruser.getUid();
 
-
-                                        reference = FirebaseDatabase.getInstance().
+                                        tutorRef = FirebaseDatabase.getInstance().
                                                 getReference("Tutors").child(userId);
 
                                         HashMap<String,String> hashMap = new HashMap<>();
@@ -82,8 +113,7 @@ public class TutorRegisterActivity extends AppCompatActivity {
                                         hashMap.put("password",password);
                                         hashMap.put("imageURL","default");
 
-                                        // sending data to tutor table
-                                        reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        tutorRef.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful())
@@ -92,27 +122,25 @@ public class TutorRegisterActivity extends AppCompatActivity {
                                                             "Successfully registered,data saved!!",
                                                             Toast.LENGTH_SHORT).show();
                                                     finish();
-                                                    startActivity(new Intent(TutorRegisterActivity.this,TutorHomeActivity.class));
+                                                    startActivity(new Intent(TutorRegisterActivity.this,TutorLoginActivity.class));
                                                 }
                                             }
                                         });
-
                                         //sendEmailVerification();
                                         //sendUserData();
+
                                     }
                                     else {
                                         Toast.makeText(TutorRegisterActivity.this,
                                                 "Registration failed!!!",
                                                 Toast.LENGTH_SHORT).show();
                                     }
+
                                 }
                             });
-
-
                 }
             }
         });
-
 
     }
 
@@ -140,7 +168,7 @@ public class TutorRegisterActivity extends AppCompatActivity {
 
     private void sendEmailVerification()
     {
-        FirebaseUser firebaseUser = auth.getInstance().getCurrentUser();
+        FirebaseUser firebaseUser = tutorAuth.getInstance().getCurrentUser();
         if (firebaseUser != null)
         {
             firebaseUser.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -152,9 +180,9 @@ public class TutorRegisterActivity extends AppCompatActivity {
                         Toast.makeText(TutorRegisterActivity.this,
                                 "Successfully registered and verification email has been sent!!!",
                                 Toast.LENGTH_SHORT).show();
-                        auth.signOut();
+                        tutorAuth.signOut();
                         finish();
-                        startActivity(new Intent(TutorRegisterActivity.this,TutorLoginActivity.class));
+                        //startActivity(new Intent(StudentRegisterActivity.this,StudentLoginActivity.class));
                     }
                     else {
                         Toast.makeText(TutorRegisterActivity.this,
@@ -165,20 +193,15 @@ public class TutorRegisterActivity extends AppCompatActivity {
             });
         }
     }
-    private void sendUserData()
-    {
+    private void sendUserData() {
         String email = emailET.getText().toString().trim();
         String name = nameET.getText().toString().trim();
         String password = passwordET.getText().toString().trim();
 
-        String id = reference.push().getKey();
+        String id = tutorRef.push().getKey();
 
-        /*Tutor tutor = new Tutor(id,email,name,password);
+        //Student student = new Student(id, email, name, password);
         assert id != null;
-        reference.child(id).setValue(tutor);
-        emailET.setText("");
-        nameET.setText("");
-        passwordET.setText("");*/
-
+        //studentref.child(id).setValue(student);
     }
 }

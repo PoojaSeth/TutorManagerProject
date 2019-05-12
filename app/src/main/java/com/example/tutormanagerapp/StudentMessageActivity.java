@@ -1,3 +1,6 @@
+/* Written by: Pooja Seth */
+
+
 package com.example.tutormanagerapp;
 
 import android.content.Intent;
@@ -27,6 +30,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import Adapter.MessageAdapter;
+import Helper.Chat;
+import Helper.TutorUser;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class StudentMessageActivity extends AppCompatActivity {

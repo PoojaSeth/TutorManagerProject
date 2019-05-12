@@ -3,11 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TutorListChatsFragment">
+    tools:context="Fragments.TutorListChatsFragment"
+    android:background="@drawable/background3">
 
     <android.support.v7.widget.RecyclerView
         android:layout_marginTop="55dp"
-        android:background="@drawable/background"
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

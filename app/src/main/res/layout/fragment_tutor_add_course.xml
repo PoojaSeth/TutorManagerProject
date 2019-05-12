@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TutorAddCourse">
+    tools:context="Fragments.TutorAddCourse"
+    android:background="@drawable/background3">
 
 
     <Button
@@ -17,4 +18,17 @@
         android:background="@drawable/button_rounded"
         android:textColor="@android:color/white"
         />
+
+    <Button
+        android:id="@+id/delete_a_course"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="Update Courses"
+        android:textSize="25dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="50dp"
+        android:background="@drawable/button_rounded"
+        android:textColor="@android:color/white"
+        />
+
 </RelativeLayout>

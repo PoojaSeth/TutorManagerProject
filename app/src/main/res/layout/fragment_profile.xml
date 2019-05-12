@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background">
+    android:background="@drawable/background3">
 
 
     <ImageView
@@ -19,15 +19,16 @@
 
     <TextView
         android:id="@+id/emailTV2"
-        android:layout_width="114dp"
-        android:layout_height="57dp"
+        android:layout_width="186dp"
+        android:layout_height="61dp"
         android:layout_alignBottom="@+id/profilepic"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        android:layout_marginBottom="-97dp"
+        android:layout_marginBottom="-100dp"
         android:text="Name"
         android:textAlignment="center"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:textColor="@android:color/black"/>
 
     <TextView
         android:id="@+id/emailTV"
@@ -39,7 +40,8 @@
         android:layout_marginBottom="-61dp"
         android:text="Email"
         android:textAlignment="center"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:textColor="@android:color/black"/>
 
     <TextView
         android:id="@+id/passwordTV"
@@ -51,7 +53,8 @@
         android:layout_marginBottom="-119dp"
         android:text="Password"
         android:textAlignment="center"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:textColor="@android:color/black"/>
 
     <Button
         android:id="@+id/updateProfilebtn"
@@ -65,7 +68,8 @@
         android:text="Update"
         android:textAlignment="center"
         android:textSize="20sp"
-        android:textColor="@android:color/white"/>
+        android:textColor="@android:color/white"
+        />
 
 
 

@@ -1,3 +1,6 @@
+/* Written by: Pooja Seth */
+
+
 package com.example.tutormanagerapp;
 
 import android.content.Intent;
@@ -23,6 +26,11 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 
+import Fragments.ChatFragment;
+import Fragments.HomeFragment;
+import Fragments.ProfileFragment;
+import Fragments.StudentSelectCourseFragment;
+import Helper.Student;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class StudentHomeActivity extends AppCompatActivity {
@@ -66,7 +74,7 @@ public class StudentHomeActivity extends AppCompatActivity {
                 nameTV.setText(name);
                 if (student.getImageURL().equals("default"))
                 {
-                    profilepic.setImageResource(R.mipmap.ic_launcher);
+                    profilepic.setImageResource(R.drawable.student);
                 }
                 else {
                     Glide.with(StudentHomeActivity.this).load(student.getImageURL()).into(profilepic);

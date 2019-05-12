@@ -4,6 +4,7 @@
     android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background3"
     android:fillViewport="true">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -11,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="visible"
-        tools:context=".TuorAddCourseForm"
+        tools:context="Fragments.TuorAddCourseForm"
         tools:visibility="visible">
 
         <TextView
@@ -35,17 +36,6 @@
             android:textColor="@color/colorPrimary"
             android:textSize="30dp" />
 
-        <!--<TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="3dp"
-            android:text=""
-            android:textAllCaps="false"
-            android:textColor="@color/colorPrimary"
-            android:textSize="12sp" />-->
-
-
-
 
         <TextView
             android:id="@+id/selectCourseTV"
@@ -55,8 +45,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="33dp"
             android:text="Select Courses:"
-            android:textColor="@color/colorPrimary"
-            android:textSize="20sp" />
+            android:textColor="@color/colorPrimary"/>
 
         <Spinner
             android:id="@+id/spinnerCourse"
@@ -66,49 +55,6 @@
             android:layout_marginLeft="33dp"
             android:layout_marginTop="10dp"
             android:entries="@array/select_course"/>
-
-
-        <!--<TextView
-            android:layout_width="fill_parent"
-            android:layout_height="32dp"
-            android:paddingLeft="3dp"
-            android:text="Email Address:"
-            android:textColor="@color/colorPrimary"
-            android:textSize="12sp" />-->
-
-        <!-- <EditText
-             android:id="@+id/emailAddress"
-             android:layout_width="500dp"
-             android:layout_height="wrap_content"
-             android:layout_marginBottom="20dp"
-             android:height="180dp"
-             android:gravity="top"
-             android:inputType="textEmailAddress"
-             android:textSize="20sp"
-             android:layout_below="@id/spinnerCourse"
-             android:layout_marginTop="20dp"
-             android:hint="Email"
-             android:layout_marginLeft="20dp"
-             />-->
-
-
-        <!--<TextView
-            android:layout_width="fill_parent"
-            android:layout_height="32dp"
-            android:paddingLeft="3dp"
-            android:text="Phone Number:"
-            android:textColor="@color/colorPrimary"
-            android:textSize="12sp" />
-
-        <EditText
-            android:id="@+id/your_message3"
-            android:layout_width="500dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:height="180dp"
-            android:gravity="top"
-            android:inputType="phone"
-            android:textSize="14sp" />-->
 
 
         <EditText
@@ -132,60 +78,167 @@
             android:layout_below="@+id/experience"
             android:layout_centerHorizontal="true"
             android:text="Availabilities"
-            android:textSize="25dp" />
+            android:textColor="@color/colorPrimary"
+            android:textSize="25dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/mondayTV"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/colorPrimary"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/availableTV"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:text="Monday: "
             android:textSize="20dp" />
 
+        <TextView
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:text="Not Available"
+            android:layout_alignBaseline="@+id/mondayTV"
+            android:layout_marginLeft="110dp"
+            android:id="@+id/monAvail"/>
+
+        <Button
+            android:id="@+id/addMonTimes"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignBaseline="@+id/mondayTV"
+            android:layout_marginLeft="380dp"
+            android:background="@drawable/button_rounded"
+            android:text="+"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+
 
         <TextView
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/colorPrimary"
             android:id="@+id/tuesdayTV"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/mondayTV"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:text="Tuesday: "
             android:textSize="20dp" />
 
         <TextView
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:text="Not Available"
+            android:layout_alignBaseline="@+id/tuesdayTV"
+            android:layout_marginLeft="110dp"
+            android:id="@+id/tuesAvail"/>
+
+        <Button
+            android:id="@+id/addTuesTimes"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignBaseline="@+id/tuesdayTV"
+            android:layout_marginLeft="380dp"
+            android:background="@drawable/button_rounded"
+            android:text="+"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/colorPrimary"
             android:id="@+id/wednesdayTV"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tuesdayTV"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:text="Wednesday: "
             android:textSize="20dp" />
 
         <TextView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Not Available"
+            android:layout_alignBaseline="@+id/wednesdayTV"
+            android:layout_marginLeft="130dp"
+            android:id="@+id/wedAvail"/>
+
+        <Button
+            android:id="@+id/addWedTimes"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignBaseline="@+id/wednesdayTV"
+            android:layout_marginLeft="380dp"
+            android:background="@drawable/button_rounded"
+            android:text="+"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/colorPrimary"
             android:id="@+id/thursdayTV"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/wednesdayTV"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:text="Thursday: "
             android:textSize="20dp" />
 
         <TextView
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:text="Not Available"
+            android:layout_alignBaseline="@+id/thursdayTV"
+            android:layout_marginLeft="110dp"
+            android:id="@+id/thursAvail"/>
+
+        <Button
+            android:id="@+id/addThursTimes"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignBaseline="@+id/thursdayTV"
+            android:layout_marginLeft="380dp"
+            android:background="@drawable/button_rounded"
+            android:text="+"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/colorPrimary"
             android:id="@+id/fridayTV"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/thursdayTV"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:text="Friday: "
             android:textSize="20dp" />
+
+        <TextView
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:text="Not Available"
+            android:layout_alignBaseline="@+id/fridayTV"
+            android:layout_marginLeft="100dp"
+            android:id="@+id/friAvail"/>
+
+        <Button
+            android:id="@+id/addFriTimes"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignBaseline="@+id/fridayTV"
+            android:layout_marginLeft="380dp"
+            android:background="@drawable/button_rounded"
+            android:text="+"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/submitCourse"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:layout_below="@+id/thursdayTV"
+            android:layout_marginTop="100dp"
+            android:layout_below="@+id/fridayTV"
             android:layout_centerHorizontal="true"
             android:text="Submit"
             android:background="@drawable/button_rounded"

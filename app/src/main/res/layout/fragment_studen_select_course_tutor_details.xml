@@ -1,0 +1,76 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context="Fragments.StudenSelectCourseTutorDetailsFragment">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/teacher"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:id="@+id/profilepic"/>
+
+    <TextView
+        android:id="@+id/tutornameTV"
+        android:layout_width="162dp"
+        android:layout_height="44dp"
+        android:layout_below="@+id/profilepic"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="Name"
+        android:textColor="@android:color/black"
+        android:textSize="25dp"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/tutorexpTV"
+        android:layout_width="233dp"
+        android:layout_height="84dp"
+        android:layout_below="@+id/tutornameTV"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="Experience"
+        android:textColor="@android:color/black"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/avail"
+        android:layout_width="216dp"
+        android:layout_height="51dp"
+        android:layout_below="@+id/tutorexpTV"
+        android:layout_centerHorizontal="true"
+        android:text="Availabilities"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="30dp"
+        android:layout_marginTop="30dp"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/avail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:id="@+id/selectTimeSpinner"/>
+
+    <Button
+        android:layout_width="226dp"
+        android:layout_height="91dp"
+        android:layout_below="@+id/selectTimeSpinner"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:textSize="20dp"
+        android:background="@drawable/button_rounded"
+        android:text="Book Appointment"
+        android:textColor="@android:color/white" />
+
+
+
+
+
+
+
+</RelativeLayout>

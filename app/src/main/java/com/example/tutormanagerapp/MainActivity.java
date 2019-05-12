@@ -1,3 +1,6 @@
+
+/* Written by: Pooja Seth */
+
 package com.example.tutormanagerapp;
 
 import android.content.Intent;
@@ -17,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         studentbtn = (Button)findViewById(R.id.studentbtn);
         tutorbtn = (Button)findViewById(R.id.tutorbtn);
-        testbtn = (Button)findViewById(R.id.testbtn);
+
 
         studentbtn.setOnClickListener(new View.OnClickListener() {
             @Override

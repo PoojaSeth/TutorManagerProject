@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Tutor Name"
+            android:textColor="@android:color/black"
+            android:layout_margin="5dp"
+            android:textSize="20sp"
+            android:id="@+id/tutorName"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Course Name"
+            android:textColor="@android:color/black"
+            android:layout_margin="5dp"
+            android:textSize="15sp"
+            android:layout_below="@+id/tutorName"
+            android:id="@+id/courseName"/>
+
+        <TextView
+            android:id="@+id/appointDay"
+            android:layout_width="109dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Day"
+            android:layout_below="@+id/courseName"
+            android:textColor="@android:color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/appointTime"
+            android:layout_width="109dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/appointDay"
+            android:layout_marginLeft="120dp"
+            android:layout_marginBottom="5dp"
+            android:text="Time"
+            android:textColor="@android:color/black"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/deleteAppBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/appointTime"
+            android:layout_marginLeft="300dp"
+            android:text="delete"
+            android:background="@drawable/button_rounded"
+            android:textColor="@android:color/white"/>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

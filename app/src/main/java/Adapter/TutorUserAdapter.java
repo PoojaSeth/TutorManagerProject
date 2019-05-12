@@ -14,7 +14,7 @@ import com.bumptech.glide.Glide;
 import com.example.tutormanagerapp.R;
 
 import com.example.tutormanagerapp.TutorMessageActivity;
-import com.example.tutormanagerapp.TutorUser;
+import Helper.TutorUser;
 
 import java.util.List;
 

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
-    tools:context=".TutorHomeFragment">
+    android:background="@drawable/background3"
+    tools:context="Fragments.TutorHomeFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="60dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome to tutor home"
-        android:textSize="30dp"
-        android:layout_centerInParent="true"/>
+        android:id="@+id/appointRV">
+    </android.support.v7.widget.RecyclerView>
 
-</RelativeLayout>
+</ScrollView>

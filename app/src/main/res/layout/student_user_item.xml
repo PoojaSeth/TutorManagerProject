@@ -10,7 +10,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:id="@+id/profile_image"
-        android:src="@drawable/student"
+        android:src="@drawable/teacher"
         />
 
     <TextView

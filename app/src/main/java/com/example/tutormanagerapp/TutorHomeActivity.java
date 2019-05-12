@@ -1,4 +1,8 @@
+/* Written by: Pooja Seth */
+
 package com.example.tutormanagerapp;
+
+
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -21,6 +25,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import Fragments.TutorAddCourse;
+import Fragments.TutorChatFragment;
+import Fragments.TutorHomeFragment;
+import Fragments.TutorProfileFragment;
+import Helper.Tutor;
+import Helper.TutorUser;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class TutorHomeActivity extends AppCompatActivity {
@@ -44,13 +54,15 @@ public class TutorHomeActivity extends AppCompatActivity {
         profilepic = (CircleImageView)findViewById(R.id.profilepic);
 
 
+
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Tutors").child(user.getUid());
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Tutor tutor = dataSnapshot.getValue(Tutor.class);
+
+                TutorUser tutor = dataSnapshot.getValue(TutorUser.class);
                 assert tutor != null;
 
                 Log.i("onDataChange: ",tutor.getName());
@@ -58,11 +70,13 @@ public class TutorHomeActivity extends AppCompatActivity {
                 Log.i( "onDataChange: ",name);
                 Log.i("onDataChange: ",tutor.getImageURL());
                 nameTV.setText(name);
+
                 if (tutor.getImageURL().equals("default"))
                 {
-                    profilepic.setImageResource(R.mipmap.ic_launcher);
+                    profilepic.setImageResource(R.drawable.teacher);
                 }
                 else {
+                    //Picasso.with(TutorHomeActivity.this).load(tutor.getImageURL()).into(profilepic);
                     Glide.with(TutorHomeActivity.this).load(tutor.getImageURL()).into(profilepic);
                 }
             }

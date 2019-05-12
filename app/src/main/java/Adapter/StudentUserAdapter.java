@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.tutormanagerapp.R;
 import com.example.tutormanagerapp.StudentMessageActivity;
-import com.example.tutormanagerapp.StudentUser;
+import Helper.StudentUser;
 
 import java.util.List;
 
@@ -34,7 +34,7 @@ public class StudentUserAdapter extends RecyclerView.Adapter<StudentUserAdapter.
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
-        View view = LayoutInflater.from(mcontext).inflate(R.layout.student_info,viewGroup,false);
+        View view = LayoutInflater.from(mcontext).inflate(R.layout.student_user_item,viewGroup,false);
         return new StudentUserAdapter.ViewHolder(view);
     }
 
@@ -43,13 +43,13 @@ public class StudentUserAdapter extends RecyclerView.Adapter<StudentUserAdapter.
 
         final StudentUser user = users.get(i);
         viewHolder.name.setText(user.getName());
-        if (user.getImageURL().equals("default"))
-        {
-            viewHolder.profilepic.setImageResource(R.mipmap.ic_launcher);
-        }
-        else {
-            Glide.with(mcontext).load(user.getImageURL()).into(viewHolder.profilepic);
-        }
+//        if (user.getImageURL().equals("default"))
+//        {
+//            viewHolder.profilepic.setImageResource(R.drawable.teacher);
+//        }
+//        else {
+//            Glide.with(mcontext).load(user.getImageURL()).into(viewHolder.profilepic);
+//        }
         /*if (isChat)
         {
             if (user.getStatus().equals("online"))
@@ -92,8 +92,8 @@ public class StudentUserAdapter extends RecyclerView.Adapter<StudentUserAdapter.
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            name = itemView.findViewById(R.id.emailTV2);
-            profilepic = itemView.findViewById(R.id.profilepic);
+            name = itemView.findViewById(R.id.username);
+            profilepic = itemView.findViewById(R.id.profile_image);
             //img_on = itemView.findViewById(R.id.img_on);
             //img_off = itemView.findViewById(R.id.img_off);
 

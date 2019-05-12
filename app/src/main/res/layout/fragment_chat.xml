@@ -3,32 +3,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background">
-
-
-    <Button
-        android:id="@+id/studentchatsbtn"
-        android:layout_width="190dp"
-        android:layout_height="60dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="60dp"
-        android:background="@drawable/button_rounded"
-        android:text="Chats"
-        android:textSize="25dp"
-        android:textColor="@android:color/white"
-        />
+    android:background="@drawable/background3">
 
     <Button
         android:id="@+id/studentUsersbtn"
-        android:layout_width="190dp"
-        android:layout_height="63dp"
-        android:layout_alignBaseline="@+id/studentchatsbtn"
-        android:layout_marginLeft="220dp"
-        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="59dp"
         android:layout_marginTop="60dp"
         android:background="@drawable/button_rounded"
-        android:text="Users"
-        android:textSize="25dp"
-        android:textColor="@android:color/white"/>
+        android:text="Chat"
+        android:textColor="@android:color/white"
+        android:textSize="25dp" />
+
 
 </RelativeLayout>
